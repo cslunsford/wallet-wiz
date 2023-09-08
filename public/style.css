@@ -1,0 +1,10 @@
+.headerBox {
+    height: 250px;
+    background-color: aquamarine;
+}
+
+.headerLogo {
+    margin-left: 600px;
+    height: 200px;
+    width: auto;
+}
