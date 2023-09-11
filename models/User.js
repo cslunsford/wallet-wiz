@@ -35,6 +35,10 @@ User.init(
                 len: [8],
             },
         },
+        balance: {
+            type: DataTypes.DECIMAL,
+            allowNull: true,
+        },
     },
     {
         hooks: {
