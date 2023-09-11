@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&family=Oswald:wght@200;400&display=swap');
+:root {
+    --background: rgb(139, 174, 227);
+    --text: rgb(41, 41, 90);
+}
+
+.upperPage {
+    display: flex;
+    flex-direction: column;
+    height: 1200px;
+    background: linear-gradient(var(--background), white);
+}
+
+.headerBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 100px;
+}
+
+.headerLogo {
+    display: flex;
+    height: 70px;
+    margin-left: 20%;
+    margin-right: 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 8px 0 rgba(0, 0, 0, 0.19);
+}
+
+.headerTextContainer {
+        display: flex;
+        height: 100px;
+        align-items: end;
+}
+
+.headerText {
+    display: flex;
+    font-family: 'Kanit', sans-serif;
+    color: rgb(53, 53, 53);
+    margin-bottom: 20px;
+}
+
+.pageBox1 {
+display: flex;
+flex-direction: column;
+margin-top: 40px;
+height: 580px;
+}
+
+.pageTextBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    height: 200px;
+}
+
+.descriptionText {
+    font-family: 'Oswald', sans-serif;
+    color: var(--text);
+    font-size: 56px;
+}
+
+.descriptionSubText {
+    font-family: 'Oswald', sans-serif;
+    color: var(--text);
+    font-size: 32px;
+}
+
+.loginBoxesContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 700px;
+}
+
+.formBoxAlign {
+    display: flex;
+    flex-direction: column;
+    height: 700px;
+    margin-top: 100px;
+    width: fit-content;
+    text-align: center;
+}
+
+.tagline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 46px;
+    color: var(--text);
+}
+
+.taglineSubtext {
+    font-family: 'Oswald', sans-serif;
+    color: var(--text);
+}
+
+.formBoxes {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 20px;
+    padding: 15px;
+    border: 3px solid var(--text);
+    box-shadow: 7px 7px var(--text);
+    margin: 60px;
+    height: 500px;
+    width: 450px;
+}
+
+.formBoxHeader {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px;
+    color: var(--text);
+}
+
+.formInputs {
+    border: 2px solid var(--text);
+    border-radius: 8px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.formLabel {
+    font-family: 'Oswald', sans-serif;
+    opacity: .6;
+}
+
+.appFeaturesBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    background-color: rgb(212, 216, 255);
+}
+
+.featuresHeader {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    margin: 25px;
+}
+
+.featuresBoxInner {
+    display: flex;
+    align-items: center;
+    height: 350px;
+}
+
+.featuresTextBox {
+    font-family: 'Oswald', sans-serif;
+    display: flex;
+    text-align: justify;
+    border-bottom: 2px solid black;
+    width: 400px;
+}
+
+.line {
+    display: flex;
+    width: 150px;
+    height: 2px;
+    background-color: black;
+}
+
