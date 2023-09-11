@@ -97,6 +97,7 @@ height: 580px;
 
 .formBoxes {
     display: flex;
+    align-items: center;
     flex-direction: column;
     background-color: white;
     border-radius: 20px;
@@ -105,7 +106,7 @@ height: 580px;
     box-shadow: 7px 7px var(--text);
     margin: 60px;
     height: 500px;
-    width: 450px;
+    width: 500px;
 }
 
 .formBoxHeader {
@@ -117,13 +118,24 @@ height: 580px;
 .formInputs {
     border: 2px solid var(--text);
     border-radius: 8px;
-    margin-top: 40px;
+    margin-top: 10px;
     margin-bottom: 20px;
+    width: 350px;
+    
 }
 
 .formLabel {
     font-family: 'Oswald', sans-serif;
     opacity: .6;
+}
+
+.btn-primary {
+margin-top: 30px;
+padding: 10px;
+width: 200px;
+
+   
+    
 }
 
 .appFeaturesBox {
