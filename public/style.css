@@ -173,3 +173,14 @@ width: 200px;
     background-color: black;
 }
 
+.column {
+    border: solid;
+    max-width: 1000px;
+    height: 300px;
+}
+
+.card {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+}
