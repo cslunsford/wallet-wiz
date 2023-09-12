@@ -31,8 +31,8 @@ User.init(
                 len: [8],
             },
         },
-        balance: {
-            type: DataTypes.DECIMAL,
+        access_token: {
+            type: DataTypes.STRING,
             allowNull: true,
         },
     },
