@@ -297,9 +297,7 @@
     width: 450px;
 }
 
-#history {
-    
-}
+#history {}
 
 #balanceCard {
     width: 60%;
@@ -319,4 +317,118 @@
     height: 650px;
     width: 60%;
     margin: 0;
+}
+
+/*media queries section*/
+/*for desktop screens*/
+@media screen and (max-width: 992px) {}
+/*work in progress*/
+
+
+/*for tablet screens*/
+@media screen and (max-width: 768px) {
+    .upperPage {
+        width: 100%;
+    }
+
+    .headerBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .headerLogo {
+        order: 0;
+    }
+
+    .headerTextContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .descriptionText {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-size: 36px;
+    }
+
+    .descriptionSubText {
+        font-size: 24px;
+    }
+
+    .tagline {
+        font-size: 30px;
+        margin-top: 100px;
+    }
+
+    /*unable to adjust form box size*/
+    .formBoxAlign {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content
+    }
+
+    .loginBoxesContainer {
+        width: 20px;
+    }
+
+    .appFeaturesBox {
+        margin-top: 100px;
+    }
+}
+
+/*for cell phone screens*/
+@media screen and (max-width: 398px) {
+
+    .upperPage {
+        width: 100%;
+    }
+
+    .headerBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .headerLogo {
+        order: 0;
+    }
+
+    .headerTextContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .descriptionText {
+        font-size: 30px;
+    }
+
+    .descriptionSubText {
+        font-size: 15px;
+    }
+
+    .tagline {
+        margin-top: 50px;
+        font-size: 30px;
+    }
+
+    /*unable to adjust form box size*/
+    .formBoxAlign {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content
+    }
+
+    .loginBoxesContainer {
+        width: 20px;
+    }
+
+    .appFeaturesBox {
+        margin-top: 0px;
+    }
 }
