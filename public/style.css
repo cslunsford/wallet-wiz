@@ -129,12 +129,18 @@
 }
 
 .btn-primary {
+    text-transform: uppercase;
     margin-top: 30px;
     padding: 10px;
-    width: 200px;
+    width: 30%;
+    color: #fff;
+    background-color: #235892;
+    border-color: #1e4c7d;
+    transition: background-color .3s ease-in-out;
+}
 
-
-
+.btn-primary:hover {
+    background-color: #1e4c7d;
 }
 
 .appFeaturesBox {
@@ -174,6 +180,10 @@
 
 /*Dashboard styles*/
 
+.dashboardHeader {
+    font-size: 48px;
+}
+
 .logoP2 {
     display: flex;
     height: 60px;
@@ -182,19 +192,28 @@
     box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 8px 0 rgba(0, 0, 0, 0.19);
 }
 
-.btn-primary {
-    margin-top: 30px;
-    padding: 10px;
-    width: 200px;
+.headerAlign {
+    display: flex;
+    justify-content: center;
 }
 
 .pageBox {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     padding: 10px;
     background: linear-gradient(var(--background), white);
+}
+
+.pageInner {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.balanceAlign {
+    display: flex;
+    justify-content: end;
+    padding-top: 40px;
 }
 
 .balanceContainer {
@@ -217,7 +236,7 @@
 
 .transactionAlign {
     display: flex;
-    justify-content: center;
+    padding-top: 40px;
 }
 
 .transactionContainer {
@@ -226,9 +245,9 @@
     align-items: center;
     justify-content: center;
     height: 600px;
-    width: 1000px;
+    width: 100%;
     margin: 10px;
-    margin-bottom: 20px;
+    padding-bottom: 20px;
 }
 
 .transactionDisplays {
@@ -236,6 +255,41 @@
     height: 20%;
     width: 80%;
     border-bottom: 2px dotted var(--background);
+}
+
+.transactionDescriptionAlign {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 10px;
+    width: 50%;
+}
+
+.transactionCompany {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.transactionDate {
+    font-size: 16px;
+    margin: 0;
+    opacity: .6;
+}
+
+.transactionAmountAlign {
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    width: 50%;
+    padding: 10px;
+}
+
+.transactionAmount {
+    font-size: 20px;
+}
+
+#accountsHeader {
+    font-size: 42px;
 }
 
 #loginBox {
@@ -248,7 +302,9 @@
 }
 
 #balanceCard {
-    width: 800px;
+    width: 60%;
+    height: 400px;
+    margin: 0;
 }
 
 #savings {
@@ -261,5 +317,6 @@
 
 #transactionCard {
     height: 650px;
-    width: 1000px;
+    width: 60%;
+    margin: 0;
 }
