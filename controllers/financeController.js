@@ -17,3 +17,5 @@ router.get('/transactions', withAuth, async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch transaction data.' });
     }
 });
+
+module.exports = router;
