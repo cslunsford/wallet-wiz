@@ -12,10 +12,8 @@ router.get('/transactions', withAuth, async (req, res) => {
             startDate,
             endDate
         );
-        res.status(200).json({ transactions: plaidResponse.data });
+        res.status(200).json({ transactions: plaidData.data });
     } catch (err) {
         res.status(500).json({ message: 'Failed to fetch transaction data.' });
     }
 });
-
-module.exports = router;
