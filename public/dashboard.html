@@ -12,7 +12,8 @@
 
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
+    <div class="container-fluid navBackground">
+        <img src="./assets/WalletWiz logo.png" class="logoP2" alt="WalletWiz header logo">
         <a class="navbar-brand" href="#">Navbar</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,16 +52,33 @@
         </div>
     </div>
 </nav>
-<div class="container">
-<div class="card" style="width: 18rem;">
-    <h2>Goodmorning User!</h2>
-    <div class="card-body">
-        <h5 class="card-title">Balance</h5>
-        <p class="card-text">Savings - $1,000,000</p><br>
-        <p>Checking - 1,000,000</p>
-        <a href="#" class="btn btn-primary">Transfer</a>
+<div class="container-fluid pageBox">
+    <div class="displayCards" id="balanceCard">
+        <h2 class="tagline">Goodmorning User!</h2>
+        <h3 class="card-title headerText">Balance</h3>
+        <div class="container-fluid balanceContainer">
+            <div class="balanceBoxes">
+                <h4>SAVINGS</h4>
+                <p class="card-text" id="savings">$1,000,000</p>
+            </div>
+            <div class="balanceBoxes">
+                <h4>CHECKING</h4>
+                <p class="card-text" id="checking">$1,000,000</p>
+            </div>
+        </div>
+        <a href="" class="btn btn-primary" id="connectButton">Connect to Bank Account</a>
+</div>
+<div class="container-fluid">
+    <div class="displayCards" id="transactionCard">
+        <h2 id="history">Transaction History</h2>
+        <div class="transactionContainer">
+            <div class="transactionDisplays"></div>
+            <div class="transactionDisplays"></div>
+            <div class="transactionDisplays"></div>
+            <div class="transactionDisplays"></div>
+            <div class="transactionDisplays"></div>
+        </div>
     </div>
 </div>
-    <h2 id="history">Transaction History</h2>
 </div>
 </div>
