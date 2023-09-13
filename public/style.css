@@ -6,6 +6,7 @@
     --blueBg: rgb(212, 216, 255);
 }
 
+/*Landing page styles*/
 .upperPage {
     display: flex;
     flex-direction: column;
@@ -32,7 +33,24 @@
 .headerTextContainer {
     display: flex;
     height: 100px;
+    width: 30%;
     align-items: end;
+}
+
+.registerButtonBox {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 50%;
+    height: 100%;
+}
+
+.registerHeader {
+    font-family: 'Kanit', sans-serif;
+    font-size: 20px;
+    color: rgb(53, 53, 53);
+    margin: 10px;
+    margin-top: 40px;
 }
 
 .headerText {
@@ -129,7 +147,6 @@
 }
 
 .btn-primary {
-    text-transform: uppercase;
     margin-top: 30px;
     padding: 10px;
     width: 30%;
@@ -160,6 +177,7 @@
 .featuresBoxInner {
     display: flex;
     align-items: center;
+    justify-content: end;
     height: 350px;
 }
 
@@ -173,12 +191,38 @@
 
 .line {
     display: flex;
-    width: 150px;
+    width: 20%;
     height: 2px;
     background-color: black;
 }
 
+#loginButton {
+    width: 120px;
+    height: 50px;
+}
+
+/*Register page styles*/
+
+.registerPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 40px;
+    background: linear-gradient(var(--background), white);
+}
+
 /*Dashboard styles*/
+
+.btn-outline-success {
+    color: #fff;
+    background-color: #235892;
+    border-color: #1e4c7d;
+}
+
+.btn-outline-success:hover {
+    background-color: #1e4c7d;
+    border-color: #1e4c7d;
+}
 
 .dashboardHeader {
     font-size: 48px;
@@ -219,6 +263,7 @@
 .balanceContainer {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .balanceBoxes {
@@ -321,7 +366,58 @@
 
 /*media queries section*/
 /*for desktop screens*/
-@media screen and (max-width: 992px) {}
+@media screen and (max-width: 992px) {
+
+    .balanceHeaders {
+        font-size: 20px;
+    }
+
+    .transactionContainer {
+        height: 350px;
+    }
+
+    .card-text {
+        font-size: 26px;
+    }
+
+    .transactionCompany {
+        font-size: 16px;
+    }
+
+    .transactionDate {
+        font-size: 12px;
+    }
+
+    .transactionAmount {
+        font-size: 16px;
+    }
+
+    #connectButton {
+        font-size: 12px;
+        width: 50%;
+    }
+
+    #accountsHeader {
+        font-size: 32px;
+    }
+
+
+
+    #history {
+        font-size: 20px;
+    }
+
+    #balanceCard {
+        width: 90%;
+    }
+
+    #transactionCard {
+        width: 90%;
+        height: 450px;
+    }
+
+}
+
 /*work in progress*/
 
 
@@ -333,7 +429,6 @@
 
     .headerBox {
         display: flex;
-        flex-direction: column;
         align-items: center;
     }
 
@@ -343,8 +438,8 @@
 
     .headerTextContainer {
         display: flex;
-        flex-direction: column;
-        align-items: center;
+        height: 100px;
+        align-items: end;
     }
 
     .descriptionText {
@@ -368,7 +463,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: fit-content
+        margin-top: 30px;
     }
 
     .loginBoxesContainer {
@@ -376,8 +471,30 @@
     }
 
     .appFeaturesBox {
-        margin-top: 100px;
+        margin-top: 80px;
     }
+
+    .featuresHeader {
+        font-size: 36px;
+    }
+
+    .featuresText {
+        font-size: 20px;
+    }
+
+    #balanceCard {
+        width: 100%;
+    }
+
+    #transactionCard {
+        width: 100%;
+        height: 450px;
+    }
+
+    #history {
+        font-size: 16px;
+    }
+
 }
 
 /*for cell phone screens*/
@@ -385,22 +502,15 @@
 
     .upperPage {
         width: 100%;
+        height: 850px;
     }
 
-    .headerBox {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    .pageBox1 {
+        height: 300px;
     }
 
     .headerLogo {
         order: 0;
-    }
-
-    .headerTextContainer {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
     }
 
     .descriptionText {
@@ -421,14 +531,57 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: fit-content
+        width: fit-content;
+        height: 400px;
+    }
+
+    .formInputs {
+        width: 250px;
     }
 
     .loginBoxesContainer {
-        width: 20px;
+        height: 300px;
     }
 
     .appFeaturesBox {
         margin-top: 0px;
+        height: 300px;
+    }
+
+    .featuresHeader {
+        font-size: 20px;
+    }
+
+    .featuresText {
+        font-size: 14px;
+    }
+
+    .pageBox {
+        flex-wrap: wrap;
+    }
+
+    .pageInner {
+        flex-wrap: wrap;
+    }
+
+    #loginBox {
+        width: 350px;
+        height: 350px;
+    }
+
+    #loginButton {
+        margin: 0;
+    }
+
+    #balanceCard {
+        height: 300px;
+    }
+
+    #savings {
+        font-size: 18px;
+    }
+
+    #checking {
+        font-size: 18px;
     }
 }
