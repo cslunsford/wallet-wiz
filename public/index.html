@@ -16,7 +16,11 @@
         <div class="container-fluid headerBox">
             <img src="./assets/WalletWiz logo.png" class="headerLogo" alt="WalletWiz header logo">
             <div class="headerTextContainer">
-                <h1 class="headerText">Finance Starts Here</h1>
+                <h1 class="headerText P1Header">Finance Starts Here</h1>
+            </div>
+            <div class="registerButtonBox">
+                <h3 class="registerHeader">Not yet managing your money? register here</h3>
+                <button type="button" class="btn btn-primary btn-lg" id="loginButton">Register</button>
             </div>
         </div>
         <div class="container-fluid pageBox1">
@@ -42,7 +46,7 @@
                             <input type="password" class="form-control" id="loginPassword" name="password" placeholder="Password">
                             <label class="formLabel" for="floatingPassword">Password</label>
                         </div>
-                        <button type="button" class="btn btn-primary btn-lg">Log In</button>
+                        <button type="button" class="btn btn-primary btn-lg" id="loginButton">Log In</button>
                     </div>
                 </div>
             </div>
@@ -52,15 +56,15 @@
         <h2 class="featuresHeader">What does WalletWhiz have to offer you?</h2>
         <div class="container-fluid featuresBoxInner">
             <div class="container-fluid featuresTextBox">
-                <h3>WalletWhiz tracks your transactions in real time so that you can accurately manage incoming and outgoing finances</h3>
+                <h3 class="featuresText">WalletWhiz tracks your transactions in real time so that you can accurately manage incoming and outgoing finances</h3>
             </div>
             <div class="line"></div>
             <div class="container-fluid featuresTextBox">
-                <h3>WalletWhiz has tools to analyze your spending habits so you can save more money for the things you want</h3>
+                <h3 class="featuresText">WalletWhiz has tools to analyze your spending habits so you can save more money for the things you want</h3>
             </div>
             <div class="line"></div>
             <div class="container-fluid featuresTextBox">
-                <h3>WalletWhiz is made by people like you, for people like you. We implimented features that we want to track our own finances</h3>
+                <h3 class="featuresText">WalletWhiz is made by people like you, for people like you. We implimented features that we want to track our own finances</h3>
             </div>
         </div>
         <div><button id="plaid-link-button">Connect with Plaid</button>
@@ -71,7 +75,8 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
         <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
-        <script src="./index.js"></script>
+    <script src="./index.js"></script>
+
 </body>
 
 </html>
