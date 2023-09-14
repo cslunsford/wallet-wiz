@@ -118,7 +118,9 @@ fetchData();
 
 
 
-
+app.get('/plaid', (req, res) => {
+  res.sendFile(path.join(__dirname, '/public/index.html'));
+});
 
 
 
