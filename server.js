@@ -44,6 +44,9 @@ const configuration = new Configuration({
 //this has to come after the configuration / plaid client init
 const plaidClient = new PlaidApi(configuration);
 
+let linkToken; //declare a variable to store the link token to export it to another file
+
+
 // Create a new link_token from PLAID -- Step 1
 app.post('/create_link_token', async function (request, response) {
   const plaidRequest = {
@@ -59,6 +62,7 @@ app.post('/create_link_token', async function (request, response) {
   try {
       const createTokenResponse = await plaidClient.linkTokenCreate(plaidRequest);
       response.json(createTokenResponse.data);
+      
   } catch (error) {
       response.status(500).send("failure");
       console.error('Plaid API Error:', error.response ? error.response.data : error.message);
@@ -66,49 +70,18 @@ app.post('/create_link_token', async function (request, response) {
   }
 });
 
-
-
-
-
-app.post("/auth", async function(request, response) {
-  try {
-      const access_token = request.body.access_token;
-      const plaidRequest = {
-          access_token: access_token,
-      };
-      const plaidResponse = await plaidClient.authGet(plaidRequest);
-      response.json(plaidResponse.data);
-  } catch (e) {
-      response.status(500).send("failed");
-  }
-});
-
-app.post('/exchange_public_token', async function (
-  request,
-  response,
-  next,
-) {
-  const publicToken = request.body.public_token;
-  try {
-      const plaidResponse = await plaidClient.itemPublicTokenExchange({
-          public_token: publicToken,
-      });
-      // These values should be saved to a persistent database and
-      // associated with the currently signed-in user
-      const accessToken = plaidResponse.data.access_token;
-      response.json({ accessToken });
-  } catch (error) {
-      response.status(500).send("failed");
-  }
-});
-
+module.exports = { linkToken };
+// Now you can use the linkToken variable in index.js
 
 
 async function fetchData() {
   try {
     const response = await axios.post('http://localhost:3000/create_link_token');
     console.log('Response:', response.data);
-  } catch (error) {
+    linkToken = response.data.link_token; // Extract link_token to variable linkToken
+    console.log("Link Token in server.js:", linkToken);
+    
+   } catch (error) {
     console.error('Error:', error.message);
   }
 }
@@ -118,7 +91,7 @@ fetchData();
 
 
 
-app.get('/plaid', (req, res) => {
+app.get('/plaidlink', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
