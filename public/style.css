@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit&family=Oswald:wght@200;400&display=swap');
+
 :root {
     --background: rgb(139, 174, 227);
     --text: rgb(41, 41, 90);
+    --blueBg: rgb(212, 216, 255);
 }
 
 .upperPage {
@@ -28,9 +30,9 @@
 }
 
 .headerTextContainer {
-        display: flex;
-        height: 100px;
-        align-items: end;
+    display: flex;
+    height: 100px;
+    align-items: end;
 }
 
 .headerText {
@@ -41,10 +43,10 @@
 }
 
 .pageBox1 {
-display: flex;
-flex-direction: column;
-margin-top: 40px;
-height: 580px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    height: 580px;
 }
 
 .pageTextBox {
@@ -95,18 +97,15 @@ height: 580px;
     color: var(--text);
 }
 
-.formBoxes {
+.displayCards {
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: white;
     border-radius: 20px;
     padding: 15px;
-    border: 3px solid var(--text);
-    box-shadow: 7px 7px var(--text);
+    box-shadow: 0 6px 12px 0 var(--background), 0 6px 8px 0 var(--background);
     margin: 60px;
-    height: 500px;
-    width: 500px;
 }
 
 .formBoxHeader {
@@ -121,7 +120,7 @@ height: 580px;
     margin-top: 10px;
     margin-bottom: 20px;
     width: 350px;
-    
+
 }
 
 .formLabel {
@@ -130,12 +129,12 @@ height: 580px;
 }
 
 .btn-primary {
-margin-top: 30px;
-padding: 10px;
-width: 200px;
+    margin-top: 30px;
+    padding: 10px;
+    width: 200px;
 
-   
-    
+
+
 }
 
 .appFeaturesBox {
@@ -143,7 +142,7 @@ width: 200px;
     flex-direction: column;
     align-items: center;
     height: 500px;
-    background-color: rgb(212, 216, 255);
+    background-color: var(--blueBg);
 }
 
 .featuresHeader {
@@ -173,3 +172,206 @@ width: 200px;
     background-color: black;
 }
 
+/*Dashboard styles*/
+
+.logoP2 {
+    display: flex;
+    height: 60px;
+    margin: 15px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2), 0 6px 8px 0 rgba(0, 0, 0, 0.19);
+}
+
+.btn-primary {
+    margin-top: 30px;
+    padding: 10px;
+    width: 200px;
+}
+
+.pageBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background: linear-gradient(var(--background), white);
+}
+
+.balanceContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.balanceBoxes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+    width: 50%;
+}
+
+.card-text {
+    font-family: 'Kanit', sans-serif;
+    font-size: 36px;
+}
+
+.transactionAlign {
+    display: flex;
+    justify-content: center;
+}
+
+.transactionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+    width: 1000px;
+    margin: 10px;
+    margin-bottom: 20px;
+}
+
+.transactionDisplays {
+    display: flex;
+    height: 20%;
+    width: 80%;
+    border-bottom: 2px dotted var(--background);
+}
+
+#loginBox {
+    height: 500px;
+    width: 450px;
+}
+
+#history {}
+
+#balanceCard {
+    width: 800px;
+}
+
+#savings {
+    color: rgb(88, 131, 108);
+}
+
+#checking {
+    color: rgb(116, 98, 139);
+}
+
+#transactionCard {
+    height: 650px;
+    width: 1000px;
+}
+
+/*media queries section*/
+/*for desktop screens*/
+@media screen and (max-width: 992px) {}
+/*work in progress*/
+
+
+/*for tablet screens*/
+@media screen and (max-width: 768px) {
+    .upperPage {
+        width: 100%;
+    }
+
+    .headerBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .headerLogo {
+        order: 0;
+    }
+
+    .headerTextContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .descriptionText {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        font-size: 36px;
+    }
+
+    .descriptionSubText {
+        font-size: 24px;
+    }
+
+    .tagline {
+        font-size: 30px;
+        margin-top: 100px;
+    }
+
+    /*unable to adjust form box size*/
+    .formBoxAlign {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content
+    }
+
+    .loginBoxesContainer {
+        width: 20px;
+    }
+
+    .appFeaturesBox {
+        margin-top: 100px;
+    }
+}
+
+/*for cell phone screens*/
+@media screen and (max-width: 398px) {
+
+    .upperPage {
+        width: 100%;
+    }
+
+    .headerBox {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .headerLogo {
+        order: 0;
+    }
+
+    .headerTextContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .descriptionText {
+        font-size: 30px;
+    }
+
+    .descriptionSubText {
+        font-size: 15px;
+    }
+
+    .tagline {
+        margin-top: 50px;
+        font-size: 30px;
+    }
+
+    /*unable to adjust form box size*/
+    .formBoxAlign {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: fit-content
+    }
+
+    .loginBoxesContainer {
+        width: 20px;
+    }
+
+    .appFeaturesBox {
+        margin-top: 0px;
+    }
+}
