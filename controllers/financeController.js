@@ -9,7 +9,7 @@ router.get('/transactions', withAuth, async (req, res) => {
         const { startDate, endDate } = helpers.getDates();
 
         const plaidData = await plaidClient.getTransactions(
-            req.session.access_token,
+            accessToken,
             startDate,
             endDate
         );
@@ -18,4 +18,6 @@ router.get('/transactions', withAuth, async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch transaction data.' });
     }
 });
-*/
+
+module.exports = router;
+

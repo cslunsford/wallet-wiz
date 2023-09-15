@@ -9,6 +9,37 @@ const bodyParser = require("body-parser");
 // Import Express and create an Express app
 const express = require("express");
 const app = express();
+const session = require('express-session');
+const exphbs = require('express-handlebars');
+const userRoutes = require('./controllers/userController');
+const authRoutes = require('./controllers/authController');
+const financeRoutes = require('./controllers/financeController');
+const sequelize = require('./config/config');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const hbs = exphbs.create();
+
+const sess = {
+  secret: process.env.SESSION_SECRET,
+  cookie: {
+    maxAge: 3600000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
+
+app.engine('handlebars', hbs.engine);
+app.set('view-engine', hbs);
+
+
 app.listen(3000, () => {
  console.log("Server running on port 3000");
 });
@@ -18,6 +49,12 @@ app.use(cors());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.json());
+app.use(userRoutes);
+app.use(authRoutes);
+app.use(financeRoutes);
+
+const PORT = process.env.PORT || 3000;
+
 
 //Axios
 const axios = require('axios');
@@ -85,7 +122,13 @@ app.post('/exchange_public_token', async function (
           public_token: publicToken,
       });
       // These values should be saved to a persistent database and
-      // associated with the currently signed-in user
+
+      const accessToken = plaidResponse.data.access_token;
+      const user = await User.findByPk(req.session.user_id);
+
+      user.access_token = accessToken;
+      await user.save();
+
       accessToken = plaidResponse.data.access_token;
       console.log('Miracle_access_token:', accessToken);
       response.json({ accessToken });
