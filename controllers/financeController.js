@@ -1,4 +1,3 @@
-/*
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const helpers = require('../utils/helpers');
@@ -20,4 +19,3 @@ router.get('/transactions', withAuth, async (req, res) => {
 });
 
 module.exports = router;
-
