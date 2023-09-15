@@ -11,7 +11,9 @@ const express = require("express");
 const app = express();
 const session = require('express-session');
 const exphbs = require('express-handlebars');
-const routes = require('./controllers');
+const userRoutes = require('./controllers/userController');
+const authRoutes = require('./controllers/authController');
+const financeRoutes = require('./controllers/financeController');
 const sequelize = require('./config/config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
@@ -43,7 +45,9 @@ app.use(cors());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.json());
-app.use(routes);
+app.use(userRoutes);
+app.use(authRoutes);
+app.use(financeRoutes);
 
 const PORT = process.env.PORT || 3000;
 
@@ -120,6 +124,7 @@ app.post('/exchange_public_token', async function (
       // associated with the currently signed-in user
       const accessToken = plaidResponse.data.access_token;
       const user = await User.findByPk(req.session.user_id);
+
       user.access_token = accessToken;
       await user.save();
       console.log('Miracle_access_token:', accessToken);
