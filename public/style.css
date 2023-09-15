@@ -366,6 +366,29 @@
 
 /*media queries section*/
 /*for desktop screens*/
+@media screen and (max-width: 1440px) {
+
+
+    .card-text {
+        font-size: 28px;
+    }
+
+    #connectButton {
+        font-size: 14px;
+        width: 40%;
+    }
+
+    #balanceCard {
+        width: 80%;
+    }
+
+    #transactionCard {
+        width: 80%;
+    }
+
+
+}
+
 @media screen and (max-width: 992px) {
 
     .balanceHeaders {

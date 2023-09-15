@@ -52,23 +52,24 @@
     </nav>
     <div class="container-fluid pageBox">
         <div class="container-fluid headerAlign">
-            <h2 class="headerText dashboardHeader">Good morning User!</h2>
+            <h2 class="headerText dashboardHeader">Hello {{User}}!</h2>
         </div>
         <div class="container-fluid pageInner">
             <div class="container-fluid balanceAlign">
                 <div class="card displayCards" id="balanceCard">
                     <h3 class="card-title headerText" id="accountsHeader">ACCOUNTS</h3>
                     <div class="container-fluid balanceContainer">
+                        {{#if logged-in}}
                         <div class="balanceBoxes">
-                            <h4 class="headerText balanceHeaders" id="savingsHeader">SAVINGS</h4>
-                            <p class="card-text" id="savings">$1,000,000</p>
+                            <h4 class="headerText balanceHeaders" id="savingsHeader">{{account1}}</h4>
+                            <p class="card-text" id="savings">{{account1Balance}}</p>
                         </div>
                         <div class="balanceBoxes">
-                            <h4 class="headerText balanceHeaders" id="checkingHeader">CHECKING</h4>
-                            <p class="card-text" id="checking">$1,000,000</p>
+                            <h4 class="headerText balanceHeaders" id="checkingHeader">{{account2}}</h4>
+                            <p class="card-text" id="checking">{{account2Balance}}</p>
                         </div>
+                        {{/if}}
                     </div>
-                    <a href="" class="btn btn-primary" id="connectButton">Connect to Bank Account</a>
                 </div>
             </div>
             <div class="container transactionAlign">

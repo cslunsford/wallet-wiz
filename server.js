@@ -14,9 +14,10 @@ app.listen(3000, () => {
 });
 
 app.use(cors());
-app.use(bodyParser.json());
+//app.use(bodyParser.json());
+app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, '/public')));
-
+app.use(express.json());
 
 //Axios
 const axios = require('axios');
@@ -64,14 +65,38 @@ app.post('/create_link_token', async function (request, response) {
       response.json(createTokenResponse.data);
       
   } catch (error) {
+    console.error('Error:', error.message);
       response.status(500).send("failure");
       console.error('Plaid API Error:', error.response ? error.response.data : error.message);
       // handle error
   }
 });
 
-module.exports = { linkToken };
-// Now you can use the linkToken variable in index.js
+app.post('/exchange_public_token', async function (
+  request,
+  response,
+  next,
+) {
+  const publicToken = request.body.public_token;
+  console.log(request.body);
+  try {
+      const plaidResponse = await plaidClient.itemPublicTokenExchange({
+          public_token: publicToken,
+      });
+      // These values should be saved to a persistent database and
+      // associated with the currently signed-in user
+      const accessToken = plaidResponse.data.access_token;
+      const user = await User.findByPk(req.session.user_id);
+      user.access_token = accessToken;
+      await user.save();
+      console.log('Miracle_access_token:', accessToken);
+      response.json({ accessToken });
+  } catch (error) {
+      response.status(500).send("failed");
+  }
+});
+
+
 
 
 async function fetchData() {
@@ -91,7 +116,7 @@ fetchData();
 
 
 
-app.get('/plaidlink', (req, res) => {
+app.get('/create', (req, res) => {
   res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
