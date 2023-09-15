@@ -1,3 +1,4 @@
+/*
 const router = require('express').Router();
 const withAuth = require('../utils/auth');
 const helpers = require('../utils/helpers');
@@ -17,3 +18,4 @@ router.get('/transactions', withAuth, async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch transaction data.' });
     }
 });
+*/
