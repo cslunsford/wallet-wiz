@@ -86,6 +86,9 @@ app.post('/exchange_public_token', async function (
       // These values should be saved to a persistent database and
       // associated with the currently signed-in user
       const accessToken = plaidResponse.data.access_token;
+      const user = await User.findByPk(req.session.user_id);
+      user.access_token = accessToken;
+      await user.save();
       console.log('Miracle_access_token:', accessToken);
       response.json({ accessToken });
   } catch (error) {
