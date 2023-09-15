@@ -40,10 +40,6 @@ app.engine('handlebars', hbs.engine);
 app.set('view-engine', hbs);
 
 
-app.listen(3000, () => {
- console.log("Server running on port 3000");
-});
-
 app.use(cors());
 //app.use(bodyParser.json());
 app.use(express.urlencoded());
@@ -54,6 +50,10 @@ app.use(authRoutes);
 app.use(financeRoutes);
 
 const PORT = process.env.PORT || 3000;
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
+});
 
 
 //Axios
