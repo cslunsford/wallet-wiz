@@ -9,16 +9,49 @@ const bodyParser = require("body-parser");
 // Import Express and create an Express app
 const express = require("express");
 const app = express();
-app.listen(3000, () => {
- console.log("Server running on port 3000");
-});
+const session = require('express-session');
+const exphbs = require('express-handlebars');
+const routes = require('./controllers');
+const sequelize = require('./config/config');
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+
+const hbs = exphbs.create();
+
+const sess = {
+  secret: process.env.SESSION_SECRET,
+  cookie: {
+    maxAge: 3600000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  },
+  resave: false,
+  saveUninitialized: true,
+  store: new SequelizeStore({
+    db: sequelize
+  })
+};
+
+app.use(session(sess));
+
+app.engine('handlebars', hbs.engine);
+app.set('view-engine', hbs);
+
 
 app.use(cors());
 //app.use(bodyParser.json());
 app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, '/public')));
 app.use(express.json());
+app.use(routes);
 
+const PORT = process.env.PORT || 3000;
+
+sequelize.sync({ force: false }).then(() => {
+  app.listen(PORT, () => {
+    console.log("Server running on port 3000");
+  })
+});
 //Axios
 const axios = require('axios');
 
