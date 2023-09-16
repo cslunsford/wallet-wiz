@@ -120,13 +120,10 @@ app.get('/transactionssync', async function (request,response,next) {
           //"start_date": "2023-04-14",
             //"end_date": "2023-04-17",
             "count": 50
-  
-      });
+        });
      console.log("Synching Transactions")
        console.log(response.data);
-       
-
-      } catch (error) {
+             } catch (error) {
         console.error('Error:', error.message);
           response.status(500).send("failure");
           console.error('Plaid API Error:', error.response ? error.response.data : error.message);
