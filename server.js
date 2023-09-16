@@ -17,7 +17,7 @@ const financeRoutes = require('./controllers/financeController');
 const sequelize = require('./config/config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
-const hbs = exphbs.create();
+const hbs = exphbs.create({});
 
 const sess = {
   secret: process.env.SESSION_SECRET,
@@ -37,7 +37,7 @@ const sess = {
 app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
-app.set('view-engine', hbs);
+app.set('view engine', 'handlebars');
 
 
 app.use(cors());
@@ -139,8 +139,10 @@ app.post('/exchange_public_token', async function (
 
 app.get('/accounts', async function (request, response, next) {
   try {
+    const user = await findByPk(req.session.user_id);
+    user.access_token = req.session.access_token;
     const accountsResponse = await plaidClient.accountsGet({
-      access_token: accessToken,
+      access_token: user.access_token,
     });
     prettyPrintResponse(accountsResponse);
     response.json(accountsResponse.data);
@@ -188,9 +190,9 @@ fetchData();
 
 
 
-app.get('/create', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
-});
+//app.get('/create', (req, res) => {
+  //res.sendFile(path.join(__dirname, '/public/index.html'));
+//});
 
 
 
@@ -204,9 +206,7 @@ app.get('/create', (req, res) => {
 // Serve 'index.html' as the default route ('*')
 // the star is a wildcard that will match any route not previously defined
 //very important to run this route last in the code
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
-});
+
 
 
 

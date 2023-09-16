@@ -24,11 +24,12 @@ const registerFormHandler = async (event) => {
 
     const email = document.querySelector('#registerEmail').value.trim();
     const password = document.querySelector('#registerPassword').value.trim();
+    const passwordConfirm = document.querySelector('#repeatPassword').value.trim();
 
     if (email && password) {
         const response = await fetch('/register', {
             method: 'POST',
-            body: JSON.Stringify({ email, password }),
+            body: JSON.stringify({ email, password, passwordConfirm }),
             headers: { 'Content-Type': 'application/json' },
         });
 
@@ -40,5 +41,10 @@ const registerFormHandler = async (event) => {
     }
 };
 
-document.querySelector('#login').addEventListener('click', loginFormHandler);
+
+document.querySelector('#registerButton').addEventListener('click', function () {
+    window.location.href = '/register';
+    console.log('button clicked');
+});
+document.querySelector('#loginButton').addEventListener('click', loginFormHandler);
 document.querySelector('#register').addEventListener('click', registerFormHandler);
