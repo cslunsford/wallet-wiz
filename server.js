@@ -125,12 +125,11 @@ app.post('/exchange_public_token', async function (
       // These values should be saved to a persistent database and
 
       const accessToken = plaidResponse.data.access_token;
-      const user = await User.findByPk(req.session.user_id);
+      const user = await User.findByPk(request.session.user_id);
 
       user.access_token = accessToken;
       await user.save();
 
-      accessToken = plaidResponse.data.access_token;
       console.log('Miracle_access_token:', accessToken);
       response.json({ accessToken });
   } catch (error) {
@@ -140,8 +139,8 @@ app.post('/exchange_public_token', async function (
 
 app.get('/accounts', async function (request, response, next) {
   try {
-    const user = await findByPk(req.session.user_id);
-    user.access_token = req.session.access_token;
+    const user = await findByPk(request.session.user_id);
+    user.access_token = request.session.access_token;
     const accountsResponse = await plaidClient.accountsGet({
       access_token: user.access_token,
     });
