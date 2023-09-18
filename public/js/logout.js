@@ -11,6 +11,6 @@ const logout = async () => {
     }
 };
 
-if ($('#logout')) {
-    $('#logout').on('click', logout);
+if ($('#logoutButton')) {
+    $('#logoutButton').on('click', logout);
 };
