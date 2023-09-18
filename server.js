@@ -16,6 +16,7 @@ const authRoutes = require('./controllers/authController');
 const financeRoutes = require('./controllers/financeController');
 const sequelize = require('./config/config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const User = require('./models/User');
 
 const hbs = exphbs.create({});
 
@@ -42,8 +43,8 @@ app.set('view engine', 'handlebars');
 
 app.use(cors());
 //app.use(bodyParser.json());
-app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.urlencoded());
 app.use(express.json());
 app.use(userRoutes);
 app.use(authRoutes);
