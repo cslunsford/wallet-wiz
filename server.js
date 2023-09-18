@@ -116,7 +116,7 @@ function prettyPrintResponse(data) {
 app.get('/transactionssync', async function (request,response,next) {
       try {
         const response = await plaidClient.transactionsSync({ 
-          access_token: "access-sandbox-2b217495-875c-453d-8aef-879a627940b0",
+          access_token: "accessToken",
           //"start_date": "2023-04-14",
             //"end_date": "2023-04-17",
             "count": 50
