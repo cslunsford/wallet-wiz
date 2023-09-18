@@ -16,8 +16,9 @@ const authRoutes = require('./controllers/authController');
 const financeRoutes = require('./controllers/financeController');
 const sequelize = require('./config/config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const User = require('./models/User');
 
-const hbs = exphbs.create();
+const hbs = exphbs.create({});
 
 const sess = {
   secret: process.env.SESSION_SECRET,
@@ -37,13 +38,13 @@ const sess = {
 app.use(session(sess));
 
 app.engine('handlebars', hbs.engine);
-app.set('view-engine', hbs);
+app.set('view engine', 'handlebars');
 
 
 app.use(cors());
 //app.use(bodyParser.json());
-app.use(express.urlencoded());
 app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.urlencoded());
 app.use(express.json());
 app.use(userRoutes);
 app.use(authRoutes);
@@ -124,12 +125,11 @@ app.post('/exchange_public_token', async function (
       // These values should be saved to a persistent database and
 
       const accessToken = plaidResponse.data.access_token;
-      const user = await User.findByPk(req.session.user_id);
+      const user = await User.findByPk(request.session.user_id);
 
       user.access_token = accessToken;
       await user.save();
 
-      accessToken = plaidResponse.data.access_token;
       console.log('Miracle_access_token:', accessToken);
       response.json({ accessToken });
   } catch (error) {
@@ -139,8 +139,10 @@ app.post('/exchange_public_token', async function (
 
 app.get('/accounts', async function (request, response, next) {
   try {
+    const user = await findByPk(request.session.user_id);
+    user.access_token = request.session.access_token;
     const accountsResponse = await plaidClient.accountsGet({
-      access_token: accessToken,
+      access_token: user.access_token,
     });
     prettyPrintResponse(accountsResponse);
     response.json(accountsResponse.data);
@@ -188,9 +190,9 @@ fetchData();
 
 
 
-app.get('/create', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
-});
+//app.get('/create', (req, res) => {
+  //res.sendFile(path.join(__dirname, '/public/index.html'));
+//});
 
 
 
@@ -204,9 +206,7 @@ app.get('/create', (req, res) => {
 // Serve 'index.html' as the default route ('*')
 // the star is a wildcard that will match any route not previously defined
 //very important to run this route last in the code
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/public/index.html'));
-});
+
 
 
 

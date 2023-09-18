@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { User } = require('../models/User');
+const User = require('../models/User');
 
-router.post('/register', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
         const { email, password, passwordConfirm } = req.body;
 
@@ -9,7 +9,7 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({ message: 'Passwords do not match. Please try again.' });
         }
 
-        const existingUser = await User.findOne({ where: { email } });
+        const existingUser = await User.findOne({ where: { email: req.body.email } });
 
         if (existingUser) {
             return res.status(400).json({ message: 'A user with this email already exists.' });
