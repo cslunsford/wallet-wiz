@@ -82,7 +82,7 @@ const configuration = new Configuration({
 });
 //this has to come after the configuration / plaid client init
 const plaidClient = new PlaidApi(configuration);
-
+const { TransactionsSyncRequest } = require('plaid');
 let linkToken; //declare a variable to store the link token to export it to another file
 
 
@@ -136,7 +136,7 @@ app.post('/exchange_public_token', async function (
       response.status(500).send("failed");
   }
 });
-
+// PLAID Pull bank accounts -- Step 3
 app.get('/accounts', async function (request, response, next) {
   try {
     const user = await findByPk(request.session.user_id);
@@ -152,12 +152,33 @@ app.get('/accounts', async function (request, response, next) {
       console.error('Plaid API Error:', error.response ? error.response.data : error.message);
   }
 });
-
-
 function prettyPrintResponse(data) {
   // Implement the function logic here
-  console.log(data); // For example, you can log the data to the console
+  console.log(data); // log the data to the console
 }
+
+//PLAID Pull bank transactions -- Step 3
+app.get('/transactionssync', async function (request,response,next) {
+      try {
+        const response = await plaidClient.transactionsSync({ 
+          access_token: "accessToken",
+          //"start_date": "2023-04-14",
+            //"end_date": "2023-04-17",
+            "count": 50
+        });
+     console.log("Synching Transactions")
+       console.log(response.data);
+             } catch (error) {
+        console.error('Error:', error.message);
+          response.status(500).send("failure");
+          console.error('Plaid API Error:', error.response ? error.response.data : error.message);
+    }
+  });
+ 
+  function prettyPrintResponse(data) {
+    // Implement the function logic here
+    console.log(data); // log the data to the console
+  }
 
 
 async function fetchData() {
