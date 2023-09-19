@@ -163,7 +163,7 @@ app.get('/transactionssync', async function (request,response,next) {
         const user = await User.findByPk(request.session.user_id);
         const transactionresponse = await plaidClient.transactionsSync({ 
           access_token: user.access_token,
-            "count": 5
+            "count": 50
         });
      console.log("Synching Transactions")
        console.log(transactionresponse.data);
