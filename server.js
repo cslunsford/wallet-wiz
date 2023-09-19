@@ -13,7 +13,6 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const userRoutes = require('./controllers/userController');
 const authRoutes = require('./controllers/authController');
-const financeRoutes = require('./controllers/financeController');
 const sequelize = require('./config/config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const User = require('./models/User');
@@ -48,7 +47,6 @@ app.use(express.urlencoded());
 app.use(express.json());
 app.use(userRoutes);
 app.use(authRoutes);
-app.use(financeRoutes);
 
 const PORT = process.env.PORT || 3000;
 
@@ -159,14 +157,12 @@ function prettyPrintResponse(data) {
   console.log(data); // log the data to the console
 }
 
-//PLAID Pull bank transactions -- Step 3
+// PLAID Pull bank transactions -- Step 3
 app.get('/transactionssync', async function (request,response,next) {
       try {
         const user = await User.findByPk(request.session.user_id);
         const transactionresponse = await plaidClient.transactionsSync({ 
           access_token: user.access_token,
-          //"start_date": "2023-04-14",
-            //"end_date": "2023-04-17",
             "count": 50
         });
      console.log("Synching Transactions")
@@ -226,7 +222,6 @@ fetchData();
 
 
 
-
 // Define a default route
 // Serve 'index.html' as the default route ('*')
 // the star is a wildcard that will match any route not previously defined
@@ -250,4 +245,4 @@ fetchData();
 
 
 
-  
+ 
