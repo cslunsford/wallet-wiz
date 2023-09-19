@@ -196,7 +196,7 @@ async function fetchData() {
     console.error('Error:', error.message);
   }
 }
-
+/*
 async function fetchAccounts() {
   try {
     const response = await axios.post('http://localhost:3000/accounts');
@@ -208,7 +208,7 @@ async function fetchAccounts() {
     console.error('Error Accounts not working', error.message);
   }
 }
-
+*/
 
 fetchData();
 
