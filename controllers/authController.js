@@ -33,13 +33,13 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({ where: { email: req.body.email } });
-
+console.log(userData);
         if (!userData) {
             return res.status(400).json({ message: 'Incorrect email or password.' });
         }
-
+console.log(req.body.password);
         const validPassword = await userData.checkPassword(req.body.password);
-
+console.log(validPassword);
         if (!validPassword) {
             return res.status(400).json({ message: 'Incorrect email or password.' });
         }
