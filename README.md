@@ -113,3 +113,4 @@ Copyright (c) September 2023
     to use this software/code you must agree to follow and comply the License.
     A copy of the License can be found at: https://www.gnu.org/licenses/gpl-3.0.md 
 
+sans licence
