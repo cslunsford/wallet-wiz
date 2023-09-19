@@ -17,6 +17,7 @@ const financeRoutes = require('./controllers/financeController');
 const sequelize = require('./config/config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const User = require('./models/User');
+const helpers = require('./utils/helpers')
 
 const hbs = exphbs.create({});
 
@@ -128,7 +129,7 @@ app.post('/exchange_public_token', async function (
       const user = await User.findByPk(request.session.user_id);
 
       user.access_token = accessToken;
-      await user.save();
+      await user.save({ fields: ["access_token"] });
 
       console.log('Miracle_access_token:', accessToken);
       response.json({ accessToken });
@@ -139,10 +140,12 @@ app.post('/exchange_public_token', async function (
 // PLAID Pull bank accounts -- Step 3
 app.get('/accounts', async function (request, response, next) {
   try {
-    const user = await findByPk(request.session.user_id);
-    user.access_token = request.session.access_token;
+    const user = await User.findByPk(request.session.user_id);
+    
+    console.log(user.access_token)
     const accountsResponse = await plaidClient.accountsGet({
       access_token: user.access_token,
+    
     });
     prettyPrintResponse(accountsResponse);
     response.json(accountsResponse.data);
@@ -157,20 +160,21 @@ function prettyPrintResponse(data) {
   console.log(data); // log the data to the console
 }
 
-//PLAID Pull bank transactions -- Step 3
+// PLAID Pull bank transactions -- Step 3
 app.get('/transactionssync', async function (request,response,next) {
       try {
-        const response = await plaidClient.transactionsSync({ 
-          access_token: "accessToken",
-          //"start_date": "2023-04-14",
-            //"end_date": "2023-04-17",
+        const { startDate, endDate } = helpers.getDates();
+        const user = await User.findByPk(request.session.user_id);
+        const transactionresponse = await plaidClient.transactionsSync({ 
+          access_token: user.access_token,
             "count": 50
         });
      console.log("Synching Transactions")
-       console.log(response.data);
+       console.log(transactionresponse.data);
+       response.json(transactionresponse.data);
              } catch (error) {
         console.error('Error:', error.message);
-          response.status(500).send("failure");
+          response.status(500).send("not failure");
           console.error('Plaid API Error:', error.response ? error.response.data : error.message);
     }
   });
@@ -222,7 +226,6 @@ fetchData();
 
 
 
-
 // Define a default route
 // Serve 'index.html' as the default route ('*')
 // the star is a wildcard that will match any route not previously defined
@@ -246,4 +249,4 @@ fetchData();
 
 
 
-  
+ 

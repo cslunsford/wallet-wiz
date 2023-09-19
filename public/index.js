@@ -2,6 +2,7 @@ console.log('index.html loaded');
 const jQuery = $;
     console.log( "ready!" );
 
+    
 (async function($) {
     console.log('index.js loaded');
     var handler = Plaid.create({
@@ -49,3 +50,39 @@ const jQuery = $;
     });
 })(jQuery);
 
+
+if ($('#fetchTransactionsButton')) {
+$('#fetchTransactionsButton').on('click', async () => {
+  try {
+    const response = await fetch('/transactionssync', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      const transactions = data.added;
+      displayTransactions(transactions);
+      console.log(transactions);
+    } else {
+      console.error('Failed to fetch transactions');
+    }
+  } catch (err) {
+    console.error(err);
+  }
+});
+}
+
+function displayTransactions(transactions) {
+  $('#transactionContainer').empty();
+  transactions.forEach((transaction) => {
+    const transactionHtml = `<div class="transaction">
+    <p>Date: ${transaction.date}</p>
+    <p>Amount: ${transaction.amount}</p>
+    <p>Merchant: ${transaction.merchant_name}</p>
+  </div>`;
+  $('#transactionContainer').append(transactionHtml);
+  });
+};

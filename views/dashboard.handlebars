@@ -24,7 +24,7 @@
             <div class="container transactionAlign">
                 <div class="card displayCards" id="transactionCard">
                     <h2 class="headerText" id="history">TRANSACTION HISTORY</h2>
-                    <div class="transactionContainer">
+                    <div class="transactionContainer" id="transactionContainer">
                         {{#each transactions}}
                         <div class="transactionDisplays">
                             <div class="transactionDescriptionAlign">
@@ -40,6 +40,7 @@
                 </div>
             </div>
         </div>
+        <button id="fetchTransactionsButton">Sync Transactions!</button>
         <button id="link-button">Link Account</button>
     </div>
     <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
