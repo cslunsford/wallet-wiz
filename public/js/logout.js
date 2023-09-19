@@ -5,10 +5,12 @@ const logout = async () => {
     });
 
     if (response.ok) {
-        document.location.replace('/login');
+        document.location.replace('/homepage');
     } else {
         alert(response.statusText);
     }
 };
 
-document.querySelector('#logout').addEventListener('click', logout);
+if ($('#logoutButton')) {
+    $('#logoutButton').on('click', logout);
+};

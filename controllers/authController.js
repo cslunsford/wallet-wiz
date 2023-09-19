@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const { User } = require('../models/User');
+const User = require('../models/User');
 
-router.post('/register', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
         const { email, password, passwordConfirm } = req.body;
 
@@ -9,7 +9,7 @@ router.post('/register', async (req, res) => {
             return res.status(400).json({ message: 'Passwords do not match. Please try again.' });
         }
 
-        const existingUser = await User.findOne({ where: { email } });
+        const existingUser = await User.findOne({ where: { email: req.body.email } });
 
         if (existingUser) {
             return res.status(400).json({ message: 'A user with this email already exists.' });
@@ -33,13 +33,13 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
     try {
         const userData = await User.findOne({ where: { email: req.body.email } });
-
+console.log(userData);
         if (!userData) {
             return res.status(400).json({ message: 'Incorrect email or password.' });
         }
-
+console.log(req.body.password);
         const validPassword = await userData.checkPassword(req.body.password);
-
+console.log(validPassword);
         if (!validPassword) {
             return res.status(400).json({ message: 'Incorrect email or password.' });
         }

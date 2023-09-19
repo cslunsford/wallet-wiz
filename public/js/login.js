@@ -1,8 +1,8 @@
 const loginFormHandler = async (event) => {
     event.preventDefault();
 
-    const email = document.querySelector('#loginInput').value.trim();
-    const password = document.querySelector('#loginPassword').value.trim();
+    const email = $('#loginEmail').val().trim();
+    const password = $('#loginPassword').val().trim();
 
     if (email && password) {
         const response = await fetch('/login', {
@@ -14,7 +14,8 @@ const loginFormHandler = async (event) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert(response.statusText);
+            const errorMessage = await response.json();
+            alert(errorMessage.message);
         }
     }
 };
@@ -22,23 +23,36 @@ const loginFormHandler = async (event) => {
 const registerFormHandler = async (event) => {
     event.preventDefault();
 
-    const email = document.querySelector('#registerEmail').value.trim();
-    const password = document.querySelector('#registerPassword').value.trim();
+    const email = $('#registerEmail').val().trim();
+    const password = $('#registerPassword').val().trim();
+    const passwordConfirm = $('#repeatPassword').val().trim();
 
     if (email && password) {
-        const response = await fetch('/register', {
+        const response = await fetch('/signup', {
             method: 'POST',
-            body: JSON.Stringify({ email, password }),
+            body: JSON.stringify({ email, password, passwordConfirm }),
             headers: { 'Content-Type': 'application/json' },
         });
 
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alert(response.statusText);
+            const errorMessage = await response.json();
+            alert(errorMessage.message);
         }
     }
 };
 
-document.querySelector('#login').addEventListener('click', loginFormHandler);
-document.querySelector('#register').addEventListener('click', registerFormHandler);
+if ($('#registerButton')) {
+    $('#registerButton').on('click', function () {
+        window.location.href = '/register';
+    });
+};
+
+if ($('#loginButton')) {
+    $('#loginButton').on('click', loginFormHandler);
+};
+
+if ($('#register')) {
+    $('#register').on('click', registerFormHandler);
+};
