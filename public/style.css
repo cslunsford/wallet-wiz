@@ -351,8 +351,6 @@
     width: 450px;
 }
 
-#history {}
-
 #balanceCard {
     width: 60%;
     height: 400px;
@@ -588,6 +586,7 @@
 
     .loginBoxesContainer {
         height: 800px;
+        flex-wrap: wrap;
     }
 
     .registerHeader {
@@ -604,10 +603,6 @@
 
     .featuresText {
         font-size: 14px;
-    }
-
-    .pageBox {
-        flex-wrap: wrap;
     }
 
     .pageInner {
