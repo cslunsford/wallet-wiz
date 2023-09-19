@@ -2,6 +2,7 @@ console.log('index.html loaded');
 const jQuery = $;
     console.log( "ready!" );
 
+    
 (async function($) {
     console.log('index.js loaded');
     var handler = Plaid.create({
