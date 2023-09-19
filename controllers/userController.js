@@ -21,8 +21,4 @@ router.get('/register', (req, res) => {
     res.render('register', { logged_in });
 });
 
-router.get('/user', (req, res) => {
-    res.render('user');
-});
-
 module.exports = router;
