@@ -1,4 +1,6 @@
 console.log('index.html loaded');
+const axios = require('axios');
+
 const jQuery = $;
     console.log( "ready!" );
 
@@ -50,3 +52,4 @@ const jQuery = $;
     });
 })(jQuery);
 
+axios.fetch('./')
