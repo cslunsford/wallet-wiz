@@ -48,7 +48,8 @@ app.use(express.json());
 app.use(userRoutes);
 app.use(authRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
@@ -173,7 +174,7 @@ app.get('/transactionssync', async function (request,response,next) {
           response.status(500).send("not failure");
           console.error('Plaid API Error:', error.response ? error.response.data : error.message);
     }
-  });
+  })
  
   function prettyPrintResponse(data) {
     // Implement the function logic here
@@ -192,7 +193,7 @@ async function fetchData() {
     console.error('Error:', error.message);
   }
 }
-
+/*
 async function fetchAccounts() {
   try {
     const response = await axios.post('http://localhost:3000/accounts');
@@ -204,7 +205,7 @@ async function fetchAccounts() {
     console.error('Error Accounts not working', error.message);
   }
 }
-
+*/
 
 fetchData();
 
