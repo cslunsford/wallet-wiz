@@ -13,11 +13,9 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const userRoutes = require('./controllers/userController');
 const authRoutes = require('./controllers/authController');
-const financeRoutes = require('./controllers/financeController');
 const sequelize = require('./config/config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const User = require('./models/User');
-const helpers = require('./utils/helpers')
 
 const hbs = exphbs.create({});
 
@@ -49,7 +47,6 @@ app.use(express.urlencoded());
 app.use(express.json());
 app.use(userRoutes);
 app.use(authRoutes);
-app.use(financeRoutes);
 
 const PORT = process.env.PORT || 3000;
 
@@ -163,11 +160,10 @@ function prettyPrintResponse(data) {
 // PLAID Pull bank transactions -- Step 3
 app.get('/transactionssync', async function (request,response,next) {
       try {
-        const { startDate, endDate } = helpers.getDates();
         const user = await User.findByPk(request.session.user_id);
         const transactionresponse = await plaidClient.transactionsSync({ 
           access_token: user.access_token,
-            "count": 50
+            "count": 5
         });
      console.log("Synching Transactions")
        console.log(transactionresponse.data);
