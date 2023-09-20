@@ -1,5 +1,4 @@
 console.log('index.html loaded');
-const axios = require('axios');
 
 const jQuery = $;
 console.log("ready!");
@@ -82,11 +81,11 @@ function displayTransactions(transactions) {
   transactions.forEach((transaction) => {
     const transactionHtml = `<div class="transactionDisplays">
     <div class="transactionDescriptionAlign>
-    <h3 class="headerText transactionCompany">Merchant: ${transaction.merchant_name}</h3>
+    <h3 class="headerText transactionCompany">${transaction.merchant_name || transaction.name}</h3>
     <h3 class="headerText transactionDate">Date: ${transaction.date}</h3>
     </div>
     <div class="transactionAmountAlign">
-    <h3 class="headerText transactionAmount">Amount: ${transaction.amount} ${transaction.iso_currency_code}</h3>
+    <h3 class="headerText transactionAmount">Amount: ${transaction.amount.toFixed(2)} ${transaction.iso_currency_code}</h3>
     </div>
   </div>`;
     $('#transactionContainer').append(transactionHtml);
@@ -120,7 +119,7 @@ function displayAccountData(data) {
   data.accounts.forEach((account) => {
     const accountHtml = `<div class="balanceBoxes">
     <h4 class="headerText balanceHeaders" id="savings">Account Name: ${account.name}</h4>
-    <p class="card-text" id="savings">Balance: ${account.balances.current} ${account.balances.iso_currency_code}</p>
+    <p class="card-text" id="savings">Balance: ${account.balances.current.toFixed(2)} ${account.balances.iso_currency_code}</p>
   </div>`;
     $('#balanceContainer').append(accountHtml);
   });
