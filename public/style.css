@@ -39,10 +39,11 @@
 
 .registerButtonBox {
     display: flex;
-    justify-content: end;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    width: 50%;
-    height: 100%;
+    width: 100%;
+    height: 80%;
 }
 
 .registerHeader {
@@ -243,6 +244,7 @@
     display: flex;
     flex-direction: column;
     padding: 10px;
+    height: 900px;
     background: linear-gradient(var(--background), white);
 }
 
@@ -332,6 +334,14 @@
     font-size: 20px;
 }
 
+.linkButtonAlign {
+    display: flex;
+    padding-top: 20px;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+}
+
 #accountsHeader {
     font-size: 42px;
 }
@@ -340,8 +350,6 @@
     height: 500px;
     width: 450px;
 }
-
-#history {}
 
 #balanceCard {
     width: 60%;
@@ -361,6 +369,16 @@
     height: 650px;
     width: 60%;
     margin: 0;
+}
+
+#link-button {
+    width: 200px;
+}
+
+#logoutButton {
+    width: 80px;
+    margin-left: 80px;
+    margin-right: 20px;
 }
 
 /*media queries section*/
@@ -489,7 +507,7 @@
     }
 
     .loginBoxesContainer {
-        width: 20px;
+        width: 100%;
     }
 
     .appFeaturesBox {
@@ -528,7 +546,8 @@
     }
 
     .pageBox1 {
-        height: 300px;
+        height: 600px;
+        margin-top: 0;
     }
 
     .headerLogo {
@@ -548,13 +567,17 @@
         font-size: 30px;
     }
 
+    .taglineSubtext {
+        text-align: center;
+    }
+
     /*unable to adjust form box size*/
     .formBoxAlign {
         display: flex;
         justify-content: center;
         align-items: center;
         width: fit-content;
-        height: 400px;
+        height: 500px;
     }
 
     .formInputs {
@@ -562,12 +585,16 @@
     }
 
     .loginBoxesContainer {
-        height: 300px;
+        height: 800px;
+        flex-wrap: wrap;
+    }
+
+    .registerHeader {
+        font-size: 16px;
     }
 
     .appFeaturesBox {
-        margin-top: 0px;
-        height: 300px;
+        display: none;
     }
 
     .featuresHeader {
@@ -578,17 +605,14 @@
         font-size: 14px;
     }
 
-    .pageBox {
-        flex-wrap: wrap;
-    }
-
     .pageInner {
         flex-wrap: wrap;
     }
 
     #loginBox {
-        width: 350px;
+        width: 300px;
         height: 350px;
+        margin: 0;
     }
 
     #loginButton {
@@ -605,5 +629,9 @@
 
     #checking {
         font-size: 18px;
+    }
+
+    #register {
+        font-size: 14px;
     }
 }
