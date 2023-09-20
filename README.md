@@ -16,6 +16,9 @@ Technologies used:
 ![Technologies](https://img.shields.io/badge/-npm-CB3837?logo=npm&logoColor=white)
 ![Technologies](https://img.shields.io/badge/-MySQL-4479A1?logo=MySQL&logoColor=white)
 ![Technologies](https://img.shields.io/badge/-Inquirer-000000?logo=&logoColor=white)
+![Technologies](https://img.shields.io/badge/-Plaid-000000?logo=PLAID&logoColor=white)
+![Technologies](https://img.shields.io/badge/-jQuery-000000?logo=JQuery&logoColor=white)
+
 
 
 ## Table of Contents
@@ -29,6 +32,9 @@ Technologies used:
 
 ## Description
 *** 
+
+This is an interactive full-stack project following the Model-View-Controller (MVC) pattern using JavaScript and integrating the Plaid API involves both back-end and front-end development. Below, it provide a financial application using Node.js for the back end, JavaScript for the front end, and Plaid API for financial data integration.
+=======
 
  
  
@@ -112,3 +118,4 @@ Copyright (c) September 2023
     This software/code is licensed under the MIT License; 
     to use this software/code you must agree to follow and comply the License.
     A copy of the License can be found at: https://www.gnu.org/licenses/gpl-3.0.md 
+
