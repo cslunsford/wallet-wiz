@@ -6,9 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "node": "nodemon server.js",
-    "start-both": "concurrently \"npm start\" \"node /public/index.js\""
-  },
+    "node": "nodemon server.js"
+      },
+      "engines": {
+        "node": "18.17.0"
+      },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -26,6 +28,7 @@
     "jquery": "^3.7.1",
     "mysql2": "^2.3.3",
     "plaid": "^15.5.0",
-    "sequelize": "^6.32.1"
+    "sequelize": "^6.33.0"
   }
+
 }

@@ -21,7 +21,6 @@ Technologies used:
 
 
 
-
 ## Table of Contents
 ***
 - [Description](#description)
@@ -33,7 +32,10 @@ Technologies used:
 
 ## Description
 *** 
+
 This is an interactive full-stack project following the Model-View-Controller (MVC) pattern using JavaScript and integrating the Plaid API involves both back-end and front-end development. Below, it provide a financial application using Node.js for the back end, JavaScript for the front end, and Plaid API for financial data integration.
+=======
+
  
  
 ### Requierments

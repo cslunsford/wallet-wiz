@@ -7,7 +7,7 @@
             <div class="container-fluid balanceAlign">
                 <div class="card displayCards" id="balanceCard">
                     <h3 class="card-title headerText" id="accountsHeader">ACCOUNTS</h3>
-                    <div class="container-fluid balanceContainer">
+                    <div class="container-fluid balanceContainer" id="balanceContainer">
                         {{#if logged-in}}
                         <div class="balanceBoxes">
                             <h4 class="headerText balanceHeaders" id="savingsHeader">{{account1}}</h4>
@@ -24,7 +24,7 @@
             <div class="container transactionAlign">
                 <div class="card displayCards" id="transactionCard">
                     <h2 class="headerText" id="history">TRANSACTION HISTORY</h2>
-                    <div class="transactionContainer">
+                    <div class="transactionContainer" id="transactionContainer">
                         {{#each transactions}}
                         <div class="transactionDisplays">
                             <div class="transactionDescriptionAlign">
@@ -40,7 +40,9 @@
                 </div>
             </div>
         </div>
-        <button id="link-button">Link Account</button>
+            <div class="linkButtonAlign">
+        <button class="btn btn-primary btn-lg" id="link-button">Link Account</button>
+            </div>
     </div>
     <script src="https://cdn.plaid.com/link/v2/stable/link-initialize.js"></script>
     <script src="anotherindex.js"></script>

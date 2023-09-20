@@ -13,7 +13,6 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const userRoutes = require('./controllers/userController');
 const authRoutes = require('./controllers/authController');
-const financeRoutes = require('./controllers/financeController');
 const sequelize = require('./config/config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const User = require('./models/User');
@@ -48,9 +47,9 @@ app.use(express.urlencoded());
 app.use(express.json());
 app.use(userRoutes);
 app.use(authRoutes);
-app.use(financeRoutes);
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8000;
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Server listening on ${PORT}`));
@@ -159,14 +158,12 @@ function prettyPrintResponse(data) {
   console.log(data); // log the data to the console
 }
 
-//PLAID Pull bank transactions -- Step 3
+// PLAID Pull bank transactions -- Step 3
 app.get('/transactionssync', async function (request,response,next) {
       try {
         const user = await User.findByPk(request.session.user_id);
         const transactionresponse = await plaidClient.transactionsSync({ 
           access_token: user.access_token,
-          //"start_date": "2023-04-14",
-            //"end_date": "2023-04-17",
             "count": 50
         });
      console.log("Synching Transactions")
@@ -177,7 +174,7 @@ app.get('/transactionssync', async function (request,response,next) {
           response.status(500).send("not failure");
           console.error('Plaid API Error:', error.response ? error.response.data : error.message);
     }
-  });
+  })
  
   function prettyPrintResponse(data) {
     // Implement the function logic here
@@ -196,7 +193,7 @@ async function fetchData() {
     console.error('Error:', error.message);
   }
 }
-
+/*
 async function fetchAccounts() {
   try {
     const response = await axios.post('http://localhost:3000/accounts');
@@ -208,6 +205,7 @@ async function fetchAccounts() {
     console.error('Error Accounts not working', error.message);
   }
 }
+*/
 
 
 fetchData();
@@ -218,7 +216,6 @@ fetchData();
 //app.get('/create', (req, res) => {
   //res.sendFile(path.join(__dirname, '/public/index.html'));
 //});
-
 
 
 
@@ -250,4 +247,4 @@ fetchData();
 
 
 
-  
+ 
